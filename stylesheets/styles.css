@@ -98,8 +98,7 @@ strong {
 }
 
 ul {
-  list-style: inside;
-  padding-left: 25px;
+  list-style: none;
 }
 
 ol {
@@ -157,6 +156,10 @@ p img {
   text-align: center;
   border: none;
 }
+
+/* Font Awesome */
+i.fa-align-left { margin-right: .5em; }
+
 
 /* Code blocks */
 
