@@ -1,0 +1,51 @@
+User-agent: *
+Disallow: /click.php
+Disallow: /member/
+Disallow: /m/
+Disallow: /public/
+Disallow: /radio/index.php
+Crawl-delay: 10
+Request-rate: 1/10
+
+User-agent: googlebot
+Allow: /*&day=
+Allow: /*&djuid=
+Allow: /*&showid=
+Allow: /*&playlist=
+Allow: /*&plid=
+Disallow: /*&month=
+Disallow: /*&merch=
+Disallow: /*&browse=
+Disallow: /*&dbdetail=
+Disallow: /*&find=
+
+
+
+User-agent: Baiduspider
+Crawl-delay: 120
+User-agent: bingbot
+Crawl-delay: 120
+User-agent: Daumoa
+Crawl-delay: 120
+User-agent: Exabot
+Crawl-delay: 120
+User-agent: Gigabot
+Crawl-delay: 120
+User-agent: AhrefsBot
+Crawl-delay: 120
+User-agent: MLBot
+Crawl-delay: 120
+User-agent: msnbot
+Crawl-delay: 120
+User-agent: opera
+Crawl-delay: 120
+User-agent: Slurp
+Crawl-delay: 120
+User-agent: Smetrics
+Crawl-delay: 120
+User-agent: teoma
+Crawl-delay: 120
+User-agent: Twiceler
+Crawl-delay: 120
+User-agent: YandexBot
+Crawl-delay: 120

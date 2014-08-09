@@ -1,0 +1,95 @@
+<public:component lightWeight="true">
+<public:attach event="onpropertychange" onevent="onPropertyChange()" />
+<public:attach event="onbeforeprint" onevent="onBeforePrint()" for="window"/>
+<public:attach event="onafterprint" onevent="onAfterPrint()" for="window"/>
+<script>
+
+// Derived from Erik Arvidsson's PNG Behavior
+// http://webfx.eae.net/contact.html#erik
+//
+// To use add class="transp" to your eleemnt
+//
+// To define the sizingMethod:
+//     * For crop: class="transp-crop" : Clips the image to fit the dimensions of the object.
+//     * For image: class="transp-image" : Enlarges or reduces the border of the object to fit the dimensions of the image.
+//     * For scale: class="transp-scale" : Stretches or shrinks the image to fill the borders of the object.
+//     Default sizingMethod is scale
+
+function main() {
+	// Root path to the image server, populated on any page that uses png.htc. If for any reason
+	// it's not available, do not proceed. http://cdn-0.nflximg.com/us/layout/util/1px.gif
+	
+	// global variables
+	isImgElement = element.tagName.toLowerCase() == "img";
+	origImgUrl = getImageUrl();
+	blankImgUrl = "/css/1px.gif";
+
+	if (checkSupport(origImgUrl)) setImageUrl();
+}
+
+function getImageUrl() {
+	if (isImgElement) {
+		return element.src;
+	} else {
+		var bgSrc = element.currentStyle.backgroundImage;
+		return bgSrc.substring(bgSrc.indexOf("(") + 1, bgSrc.indexOf(")")).replace(/(\"|\')/g, "");	//" remove quotes from around background image URL
+	}
+}
+
+function checkSupport(src) {
+	return (
+		/MSIE (5\.5)|6/.test(navigator.userAgent) &&
+		/\btransp\b/.test(element.className) &&
+		/\.png$/i.test(src) &&
+		(!src || src.indexOf(blankImgUrl) == -1)
+	);
+}
+
+function getSizingMethod() {
+    //sizeMethod = /\btransp-(crop|scale|image)\b/.exec(element.className);
+    //return (sizeMethod && sizeMethod.length > 1) ? sizeMethod[1] : "scale";
+	return 'scale';
+};
+
+function onPropertyChange() {
+	var pn = event.propertyName;
+	if ((pn == "src" || pn == "className" || pn == "style") && checkSupport(getImageUrl())) {
+		setImageUrl();
+	}
+};
+
+
+function setImageUrl() {
+	if (element.onload == setImageUrl)
+		element.onload = null;
+
+	var imgUrl = getImageUrl();
+	if (imgUrl != blankImgUrl)
+		origImgUrl = imgUrl; // back up old src
+
+	if (isImgElement) {
+		element.src = blankImgUrl;
+	} else {
+		element.style.backgroundImage = "none";
+	}
+
+	element.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + origImgUrl + "',sizingMethod='" + getSizingMethod() + "')";
+}
+
+// Restore the image to its original state for printing
+function onBeforePrint() {
+	isPrinting = true;
+	element.src = origImgUrl;
+	element.runtimeStyle.filter = "";
+	origImgUrl = null;
+}
+
+function onAfterPrint() {
+	isPrinting = false;
+	setImageUrl();
+}
+
+main();
+
+</script>
+</public:component>

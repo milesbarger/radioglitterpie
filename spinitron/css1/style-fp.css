@@ -1,0 +1,131 @@
+@charset "US-ASCII";
+#mastheadlogo {
+	margin: 1em 0 0.75em 1.5em;
+	}
+
+#stationlist b {
+	color: #600;
+	}
+
+#stationlist li {
+	font-size: 91%;
+	margin-top: 0.3em;
+	}
+
+#about-nav a {
+	text-decoration: none;
+	color: inherit;
+	background: inherit;
+	display: block;
+	padding: 0.4em 0.8em;
+	height: 1%; /* the holly hack. triggers "haslayout" in ie6/7 */
+	}
+
+#about-nav a:hover {
+	color: orange;
+	background: #666;
+	}
+
+#about-nav div.aboutmenu {
+	margin: 2px 0 0 0;
+	font-weight: bold;
+	color: #600;
+	background: #e7e7e7;
+	}
+
+#about-nav {
+	padding-bottom: 0;
+	}
+
+#about-nav div.one {
+	margin-top: 0;
+	}
+
+#about-nav div.aboutmenu.dim,
+#about-nav a.dim {
+	color: white;
+	background: #600;
+	}
+
+#stationlist a,
+#songs a {
+	color: black;
+	text-decoration: none;
+	}
+
+#stationlist a:hover,
+#songs a:hover {
+	color: #600;
+	text-decoration: underline;
+	}
+
+#songs b {
+	color: #333;
+	}
+
+a {
+	color: #600;
+	text-decoration: underline;
+	}
+
+a:hover {
+	color: red;
+	}
+
+table {
+	margin: 1em 2em;
+	border-collapse: collapse;
+	}
+
+td {
+	border: 1px solid #600;
+	padding: 0.4em 0.8em;
+	}
+
+td li {
+	margin-top: 0em;
+	}
+
+a.rsslink {
+	display: block;
+	margin: 0.5em 0 0 0.8em;
+	line-height: 1.25em;
+	text-decoration: none;
+	/*color: #803516;*/
+	}
+
+a.rsslink img {
+	margin: 0 0 -3px 0;
+	}
+
+a.rsslink span {
+	text-decoration: underline;
+	}
+
+#flashmovie div.lay-box {
+	background: black;
+	text-align: center;
+	padding: 0 auto;
+	}
+
+#flashmovie object {
+	margin: 1em auto 0;
+	}
+
+table.twins {
+	margin: 0;
+	}
+
+table.twins td {
+	margin: 0;
+	border: none;
+	}
+
+div.lay-box.twins {
+	padding: 0;
+	}
+
+iframe.yt {
+	margin: 1em 1em 0;
+	border: 2px solid black;
+	}
